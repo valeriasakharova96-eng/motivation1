@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровни школьной мотивации</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 750px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .flip-card {
+            perspective: 1500px;
+            height: 420px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ЛИЦЕВАЯ СТОРОНА */
+        .flip-card-front {
+            background: linear-gradient(135deg, #00A679 0%, #008f68 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .flip-card-front .number {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.85;
+            margin-bottom: 16px;
+            padding: 6px 14px;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+        }
+
+        .flip-card-front h2 {
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .flip-card-front .hint {
+            font-size: 13px;
+            opacity: 0.85;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .flip-card-front .hint::before {
+            content: "↻";
+            font-size: 18px;
+        }
+
+        /* ОБОРОТНАЯ СТОРОНА */
+        .flip-card-back {
+            background: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flip-card-back-header {
+            background: #00A679;
+            color: white;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .flip-card-back-content {
+            padding: 18px 22px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .flip-card-back-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .flip-card-back-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .flip-card-back-content::-webkit-scrollbar-thumb {
+            background: #00A679;
+            border-radius: 4px;
+        }
+
+        .flip-card-back-content::-webkit-scrollbar-thumb:hover {
+            background: #008f68;
+        }
+
+        .content-section {
+            margin-bottom: 16px;
+        }
+
+        .content-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-section h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #00A679;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #00A679;
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-section li {
+            padding: 4px 0 4px 18px;
+            position: relative;
+            color: #444;
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .content-section li:before {
+            content: "•";
+            position: absolute;
+            left: 4px;
+            color: #00A679;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Карточка 1: Низкая мотивация -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="number">Уровень 1</div>
+                    <h2>Низкая мотивация</h2>
+                    <div class="hint">нажмите, чтобы перевернуть</div>
+                </div>
+                <div class="flip-card-back">
+                    <div class="flip-card-back-header">Низкая мотивация</div>
+                    <div class="flip-card-back-content">
+                        <div class="content-section">
+                            <h3>Характеристика учеников:</h3>
+                            <ul>
+                                <li>Медлительные, быстро утомляются;</li>
+                                <li>Не хотят учиться и узнавать что-то новое;</li>
+                                <li>Обладают низким уровнем аналитического мышления, не способны к творческому обобщению;</li>
+                                <li>Желание учиться пропадает при первой же ошибке;</li>
+                                <li>Относятся к школе отрицательно или безразлично, посещают занятия неохотно;</li>
+                                <li>На уроках часто занимаются посторонними делами, отвлекаются, нарушают дисциплину;</li>
+                                <li>Усваивают учебный материал фрагментарно.</li>
+                            </ul>
+                        </div>
+                        <div class="content-section">
+                            <h3>Как работать:</h3>
+                            <ul>
+                                <li>Поощряйте за малейшие успехи, акцентируйте внимание на сильных сторонах;</li>
+                                <li>Создавайте ситуацию успеха – подбирайте сначала несложные задания, например искать информацию в таблицах, учебнике, делать рисунки по теме урока. Постепенно повышайте сложность;</li>
+                                <li>Поддерживайте дружескую атмосферу, будьте внимательны к ребенку, оказывайте эмоциональную поддержку;</li>
+                                <li>Обсудите с родителями перевод на индивидуальный учебный план, если ребенок не справляется;</li>
+                                <li>Заведите «защитный лист», на котором любой ученик без объяснения причин может вписать свою фамилию и быть уверенным, что его сегодня не спросят. Оговорите условия, чтобы дети не злоупотребляли записями в «защитном листе»;</li>
+                                <li>Ставьте ученику оценку «авансом» – это дает возможность лучше подготовиться к следующему уроку и формирует ответственное отношение.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 2: Средняя мотивация -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="number">Уровень 2</div>
+                    <h2>Средняя мотивация</h2>
+                    <div class="hint">нажмите, чтобы перевернуть</div>
+                </div>
+                <div class="flip-card-back">
+                    <div class="flip-card-back-header">Средняя мотивация</div>
+                    <div class="flip-card-back-content">
+                        <div class="content-section">
+                            <h3>Характеристика учеников:</h3>
+                            <ul>
+                                <li>Относятся к школе положительно;</li>
+                                <li>Понимают учебный материал;</li>
+                                <li>Самостоятельно решают типовые задачи;</li>
+                                <li>При выполнении заданий и поручений внимательны, но требуют контроля;</li>
+                                <li>Сосредоточены на задании, если заинтересованы в нем;</li>
+                                <li>Домашнюю работу выполняют;</li>
+                                <li>Нестабильны: могут как терять мотивацию к учебе, так и быстро повышать.</li>
+                            </ul>
+                        </div>
+                        <div class="content-section">
+                            <h3>Как работать:</h3>
+                            <ul>
+                                <li>Регулярно повышайте сложность заданий, чтобы дети не теряли интереса;</li>
+                                <li>Давайте выполнимые поручения, чтобы дети чувствовали себя успешными и уверенными в своих силах;</li>
+                                <li>Контролируйте уровень мотивации, чтобы не упустить потенциально успешного школьника;</li>
+                                <li>Предлагайте задания на анализ, сравнение, систематизацию информации;</li>
+                                <li>Обращайтесь к жизненному опыту детей. Обсуждайте знакомые им ситуации;</li>
+                                <li>Предоставьте возможность работать самостоятельно;</li>
+                                <li>Всегда давайте отзыв на самостоятельные работы, но не критикуйте и не сравнивайте результаты учеников между собой;</li>
+                                <li>Помогайте ученикам ставить перед собой микроцели.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 3: Высокая мотивация -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="number">Уровень 3</div>
+                    <h2>Высокая мотивация</h2>
+                    <div class="hint">нажмите, чтобы перевернуть</div>
+                </div>
+                <div class="flip-card-back">
+                    <div class="flip-card-back-header">Высокая мотивация</div>
+                    <div class="flip-card-back-content">
+                        <div class="content-section">
+                            <h3>Характеристика учеников:</h3>
+                            <ul>
+                                <li>Обладают творческим нестандартным мышлением, устойчивым вниманием, хорошей работоспособностью;</li>
+                                <li>Владеют навыками самостоятельного анализа и обобщения информации;</li>
+                                <li>Положительно относятся к школе;</li>
+                                <li>Стремятся выполнять все школьные требования;</li>
+                                <li>Легко усваивают учебный материал;</li>
+                                <li>Выполняют поручения без внешнего контроля;</li>
+                                <li>Проявляют интерес к самостоятельной работе.</li>
+                            </ul>
+                        </div>
+                        <div class="content-section">
+                            <h3>Как работать:</h3>
+                            <ul>
+                                <li>Хвалите, подчеркивайте достоинства, замечайте успехи. Соблюдайте золотую середину;</li>
+                                <li>Приучайте к мысли о возможности неудач, чтобы они воспринимали их менее болезненно;</li>
+                                <li>Давайте задания повышенной сложности, нестандартные задачи на смекалку и логику;</li>
+                                <li>Критикуйте обоснованно;</li>
+                                <li>Используйте нематериальное и безоценочное поощрение: публикации в школьных СМИ, фото на доске почета;</li>
+                                <li>Составляйте с учениками портфолио достижений.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 4: Смешанная мотивация -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="number">Уровень 4</div>
+                    <h2>Смешанная мотивация</h2>
+                    <div class="hint">нажмите, чтобы перевернуть</div>
+                </div>
+                <div class="flip-card-back">
+                    <div class="flip-card-back-header">Смешанная мотивация</div>
+                    <div class="flip-card-back-content">
+                        <div class="content-section">
+                            <h3>Характеристика учеников:</h3>
+                            <ul>
+                                <li>Обладают одаренностью. Хотят изучать ту предметную область, в которой одарены;</li>
+                                <li>Не испытывают интереса к остальным предметам.</li>
+                            </ul>
+                        </div>
+                        <div class="content-section">
+                            <h3>Как работать:</h3>
+                            <ul>
+                                <li>Занимайтесь научной деятельностью на серьезном уровне. Способствуйте участию в конференциях, публикуйте статьи;</li>
+                                <li>Обсудите с родителями вариант перехода на индивидуальный учебный план;</li>
+                                <li>Поручите одаренному ученику самостоятельно разрабатывать задания для себя и одноклассников;</li>
+                                <li>Задавайте направление для развития способностей, но не давите. Позвольте развиваться в тех областях, в которых им хочется;</li>
+                                <li>Предоставьте возможность работать самостоятельно. Дайте свободу — и он удивит нестандартными решениями;</li>
+                                <li>Всегда давайте отзыв на самостоятельные работы, но избегайте критики. Если критикуете — делайте это аргументированно;</li>
+                                <li>Давайте как можно больше нестандартных задач на смекалку и логику. Межпредметные задания всегда привлекательны для таких детей.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.flip-card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+    </script>
+</body>
+</html>
